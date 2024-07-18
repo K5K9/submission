@@ -1,0 +1,11 @@
+﻿{% extends "base.html" %}
+{% block content %}
+<h1>Register</h1>
+<form method="POST">
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="email" name="gmail_address" placeholder="Gmail Address" required>
+    <input type="password" name="gmail_app_password" placeholder="Gmail App Password" required>
+    <input type="submit" value="Register">
+</form>
+{% endblock %}

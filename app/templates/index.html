@@ -1,0 +1,25 @@
+﻿{% extends "base.html" %}
+{% block content %}
+<h1>Welcome, {{ current_user.username }}</h1>
+<h2>Your Schedules</h2>
+<ul>
+    {% for schedule in schedules %}
+    <li>
+        {{ schedule.subject }} ({{ schedule.day }},
+        {{ schedule.start_time.strftime('%H:%M') }} - {{ schedule.end_time.strftime('%H:%M') }},
+        Room: {{ schedule.room_number }})
+        <form action="{{ url_for('delete_schedule', schedule_id=schedule.id) }}" method="POST">
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('add_schedule') }}">Add New Schedule</a>
+
+<h2>Recent Notifications</h2>
+<ul>
+    {% for notification in notifications %}
+    <li>{{ notification.message }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
